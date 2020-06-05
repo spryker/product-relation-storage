@@ -7,23 +7,38 @@
 
 namespace Spryker\Zed\ProductRelationStorage\Communication\Plugin\Synchronization;
 
-use Propel\Runtime\ActiveQuery\ModelCriteria;
+use Generated\Shared\Transfer\FilterTransfer;
 use Spryker\Shared\ProductRelationStorage\ProductRelationStorageConfig;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataQueryContainerPluginInterface;
+use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataBulkRepositoryPluginInterface;
 
 /**
- * @deprecated Use {@link \Spryker\Zed\ProductRelationStorage\Communication\Plugin\Synchronization\ProductRelationSynchronizationDataRepositoryPlugin} instead.
- *
- * @see \Spryker\Zed\ProductRelationStorage\Communication\Plugin\Synchronization\ProductRelationSynchronizationDataRepositoryPlugin
- *
  * @method \Spryker\Zed\ProductRelationStorage\Persistence\ProductRelationStorageQueryContainerInterface getQueryContainer()
  * @method \Spryker\Zed\ProductRelationStorage\Business\ProductRelationStorageFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductRelationStorage\Communication\ProductRelationStorageCommunicationFactory getFactory()
  * @method \Spryker\Zed\ProductRelationStorage\ProductRelationStorageConfig getConfig()
  */
-class ProductRelationSynchronizationDataPlugin extends AbstractPlugin implements SynchronizationDataQueryContainerPluginInterface
+class ProductRelationSynchronizationDataRepositoryPlugin extends AbstractPlugin implements SynchronizationDataBulkRepositoryPluginInterface
 {
+    /**
+     * {@inheritDoc}
+     * - Retrieves a collection of product relation storage transfer according to provided offset, limit and ids.
+     *
+     * @api
+     *
+     * @param int $offset
+     * @param int $limit
+     * @param int[] $ids
+     *
+     * @return \Generated\Shared\Transfer\SynchronizationDataTransfer[]
+     */
+    public function getData(int $offset, int $limit, array $ids = []): array
+    {
+        $filterTransfer = $this->createFilterTransfer($offset, $limit);
+
+        return $this->getFacade()->findProductRelationStorageDataTransfersByIds($filterTransfer, $ids);
+    }
+
     /**
      * {@inheritDoc}
      *
@@ -46,26 +61,6 @@ class ProductRelationSynchronizationDataPlugin extends AbstractPlugin implements
     public function hasStore(): bool
     {
         return true;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @api
-     *
-     * @param int[] $ids
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria|null
-     */
-    public function queryData($ids = []): ?ModelCriteria
-    {
-        $query = $this->getQueryContainer()->queryProductAbstractRelationStorageByIds($ids);
-
-        if ($ids === []) {
-            $query->clear();
-        }
-
-        return $query->orderByIdProductAbstractRelationStorage();
     }
 
     /**
@@ -102,5 +97,18 @@ class ProductRelationSynchronizationDataPlugin extends AbstractPlugin implements
     public function getSynchronizationQueuePoolName(): ?string
     {
         return $this->getFactory()->getConfig()->getProductAbstractRelationSynchronizationPoolName();
+    }
+
+    /**
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return \Generated\Shared\Transfer\FilterTransfer
+     */
+    protected function createFilterTransfer(int $offset, int $limit): FilterTransfer
+    {
+        return (new FilterTransfer())
+            ->setOffset($offset)
+            ->setLimit($limit);
     }
 }
