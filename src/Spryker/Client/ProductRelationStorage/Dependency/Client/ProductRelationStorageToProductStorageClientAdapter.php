@@ -43,6 +43,7 @@ class ProductRelationStorageToProductStorageClientAdapter implements ProductRela
      */
     public function getBulkProductAbstractStorageDataByProductAbstractIdsAndLocaleName(array $productAbstractIds, string $localeName): array
     {
+        // @phpstan-ignore function.alreadyNarrowedType (BC for supporting old majors of ProductStorage module)
         if (!method_exists($this->productStorageClient, 'getBulkProductAbstractStorageDataByProductAbstractIdsAndLocaleName')) {
             return $this->getProductAbstractStorageDataByProductAbstractIdsAndLocaleName($productAbstractIds, $localeName);
         }
@@ -82,6 +83,7 @@ class ProductRelationStorageToProductStorageClientAdapter implements ProductRela
         string $localeName,
         string $storeName
     ): array {
+        // @phpstan-ignore function.alreadyNarrowedType (BC for supporting old majors of ProductStorage module)
         if (method_exists($this->productStorageClient, 'getBulkProductAbstractStorageDataByProductAbstractIdsForLocaleNameAndStore')) {
             return $this->productStorageClient->getBulkProductAbstractStorageDataByProductAbstractIdsForLocaleNameAndStore($productAbstractIds, $localeName, $storeName);
         }
