@@ -28,20 +28,11 @@ class ProductRelationStorageBusinessTester extends Actor
 {
     use _generated\ProductRelationStorageBusinessTesterActions;
 
-    /**
-     * @return void
-     */
     public function ensureProductRelationStorageTableIsEmpty(): void
     {
         SpyProductAbstractRelationStorageQuery::create()->deleteAll();
     }
 
-    /**
-     * @param int $idProductAbstract
-     * @param string $storeName
-     *
-     * @return bool
-     */
     public function isProductAbstractRelationStorageRecordExists(int $idProductAbstract, string $storeName): bool
     {
         return SpyProductAbstractRelationStorageQuery::create()

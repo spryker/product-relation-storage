@@ -48,13 +48,6 @@ class ProductRelationStorageWriter implements ProductRelationStorageWriterInterf
      */
     protected $productRelationStorageGrouper;
 
-    /**
-     * @param \Spryker\Zed\ProductRelationStorage\Persistence\ProductRelationStorageRepositoryInterface $productRelationStorageRepository
-     * @param \Spryker\Zed\ProductRelationStorage\Dependency\Facade\ProductRelationStorageToProductRelationFacadeInterface $productRelationFacade
-     * @param \Spryker\Zed\ProductRelationStorage\Persistence\ProductRelationStorageEntityManagerInterface $productRelationStorageEntityManager
-     * @param \Spryker\Zed\ProductRelationStorage\Dependency\Facade\ProductRelationStorageToEventBehaviorFacadeInterface $eventBehaviorFacade
-     * @param \Spryker\Zed\ProductRelationStorage\Business\Grouper\ProductRelationStorageGrouperInterface $productRelationStorageGrouper
-     */
     public function __construct(
         ProductRelationStorageRepositoryInterface $productRelationStorageRepository,
         ProductRelationStorageToProductRelationFacadeInterface $productRelationFacade,
@@ -199,12 +192,6 @@ class ProductRelationStorageWriter implements ProductRelationStorageWriterInterf
         }
     }
 
-    /**
-     * @param int $idProductAbstract
-     * @param array $productRelationTransfersByStore
-     *
-     * @return void
-     */
     protected function deleteEmptyRows(
         int $idProductAbstract,
         array $productRelationTransfersByStore

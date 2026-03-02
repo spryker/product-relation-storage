@@ -76,9 +76,6 @@ class ProductRelationStorageListenerTest extends Unit
      */
     protected $productAbstractTransferRelatedForAnotherStore;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -132,17 +129,11 @@ class ProductRelationStorageListenerTest extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductRelation\Business\ProductRelationFacade
-     */
     protected function createProductRelationFacade(): ProductRelationFacade
     {
         return new ProductRelationFacade();
     }
 
-    /**
-     * @return void
-     */
     public function testProductRelationPublishStorageListenerStoreData(): void
     {
         SpyProductAbstractRelationStorageQuery::create()
@@ -166,9 +157,6 @@ class ProductRelationStorageListenerTest extends Unit
         $this->assertProductAbstractRelationStorage($beforeCount);
     }
 
-    /**
-     * @return void
-     */
     public function testProductRelationStorageListenerStoreData(): void
     {
         SpyProductAbstractRelationStorageQuery::create()
@@ -196,9 +184,6 @@ class ProductRelationStorageListenerTest extends Unit
         $this->assertProductAbstractRelationStorage($beforeCount);
     }
 
-    /**
-     * @return void
-     */
     public function testProductRelationProductAbstractStorageListenerStoreData(): void
     {
         SpyProductAbstractRelationStorageQuery::create()
@@ -226,9 +211,6 @@ class ProductRelationStorageListenerTest extends Unit
         $this->assertProductAbstractRelationStorage($beforeCount);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductRelationStorage\Business\ProductRelationStorageFacade
-     */
     protected function getProductRelationStorageFacade(): ProductRelationStorageFacade
     {
         $factory = new ProductRelationStorageBusinessFactory();
@@ -240,11 +222,6 @@ class ProductRelationStorageListenerTest extends Unit
         return $facade;
     }
 
-    /**
-     * @param int $beforeCount
-     *
-     * @return void
-     */
     protected function assertProductAbstractRelationStorage(int $beforeCount): void
     {
         $productRelationStorageCount = SpyProductAbstractRelationStorageQuery::create()

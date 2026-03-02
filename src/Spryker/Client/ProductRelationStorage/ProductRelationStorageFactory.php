@@ -67,9 +67,6 @@ class ProductRelationStorageFactory extends AbstractFactory
         return $this->getProvidedDependency(ProductRelationStorageDependencyProvider::SERVICE_SYNCHRONIZATION);
     }
 
-    /**
-     * @return \Spryker\Client\ProductRelationStorage\Dependency\Client\ProductRelationStorageToProductStorageClientInterface
-     */
     public function getProductStorageClient(): ProductRelationStorageToProductStorageClientInterface
     {
         return $this->getProvidedDependency(ProductRelationStorageDependencyProvider::CLIENT_PRODUCT_STORAGE);

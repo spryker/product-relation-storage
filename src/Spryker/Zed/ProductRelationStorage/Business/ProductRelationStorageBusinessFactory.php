@@ -24,9 +24,6 @@ use Spryker\Zed\ProductRelationStorage\ProductRelationStorageDependencyProvider;
  */
 class ProductRelationStorageBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductRelationStorage\Business\Writer\ProductRelationStorageWriterInterface
-     */
     public function createProductRelationStorageWriter(): ProductRelationStorageWriterInterface
     {
         return new ProductRelationStorageWriter(
@@ -38,25 +35,16 @@ class ProductRelationStorageBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductRelationStorage\Business\Grouper\ProductRelationStorageGrouperInterface
-     */
     public function createProductRelationStorageGrouper(): ProductRelationStorageGrouperInterface
     {
         return new ProductRelationStorageGrouper();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductRelationStorage\Dependency\Facade\ProductRelationStorageToProductRelationFacadeInterface
-     */
     public function getProductRelationFacade(): ProductRelationStorageToProductRelationFacadeInterface
     {
         return $this->getProvidedDependency(ProductRelationStorageDependencyProvider::FACADE_PRODUCT_RELATION);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductRelationStorage\Dependency\Facade\ProductRelationStorageToEventBehaviorFacadeInterface
-     */
     public function getEventBehaviorFacade(): ProductRelationStorageToEventBehaviorFacadeInterface
     {
         return $this->getProvidedDependency(ProductRelationStorageDependencyProvider::FACADE_EVENT_BEHAVIOR);

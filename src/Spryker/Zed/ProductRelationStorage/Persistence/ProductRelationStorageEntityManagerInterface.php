@@ -14,12 +14,6 @@ use Generated\Shared\Transfer\ProductAbstractRelationStorageTransfer;
  */
 interface ProductRelationStorageEntityManagerInterface
 {
-    /**
-     * @param int $idProductAbstract
-     * @param \Generated\Shared\Transfer\ProductAbstractRelationStorageTransfer $productAbstractRelationStorageTransfer
-     *
-     * @return void
-     */
     public function saveProductAbstractRelationStorageEntity(
         int $idProductAbstract,
         ProductAbstractRelationStorageTransfer $productAbstractRelationStorageTransfer

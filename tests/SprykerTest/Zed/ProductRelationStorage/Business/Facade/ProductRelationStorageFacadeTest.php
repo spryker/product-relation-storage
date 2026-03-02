@@ -53,9 +53,6 @@ class ProductRelationStorageFacadeTest extends Unit
      */
     protected $productRelationFacade;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -71,9 +68,6 @@ class ProductRelationStorageFacadeTest extends Unit
         $this->productRelationFacade = $this->tester->getLocator()->productRelation()->facade();
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCollectionByProductRelationEventsShouldSaveProductAbstractRelationStorage(): void
     {
         // Arrange
@@ -98,9 +92,6 @@ class ProductRelationStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCollectionByProductRelationEventsShouldRemoveProductRelationFromProductAbstractRelationStorage(): void
     {
         // Arrange
@@ -128,9 +119,6 @@ class ProductRelationStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCollectionByProductRelationPublishingEventsShouldSaveProductAbstractRelationStorage(): void
     {
         // Arrange
@@ -153,9 +141,6 @@ class ProductRelationStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCollectionByProductRelationProductAbstractEventsShouldSaveProductAbstractRelationStorage(): void
     {
         // Arrange
@@ -180,9 +165,6 @@ class ProductRelationStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCollectionByProductRelationProductAbstractEventsShouldRemoveRelatedProductFromProductAbstractRelationStorage(): void
     {
         // Arrange
@@ -211,9 +193,6 @@ class ProductRelationStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCollectionByProductRelationStoreEventsShouldSaveProductAbstractRelationStorage(): void
     {
         // Arrange
@@ -238,9 +217,6 @@ class ProductRelationStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCollectionByProductRelationStoreEventsShouldRemoveProductAbstractRelationStorage(): void
     {
         // Arrange
@@ -267,9 +243,6 @@ class ProductRelationStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductRelationTransfer
-     */
     protected function prepareProductRelation(): ProductRelationTransfer
     {
         $this->tester->ensureProductRelationTableIsEmpty();

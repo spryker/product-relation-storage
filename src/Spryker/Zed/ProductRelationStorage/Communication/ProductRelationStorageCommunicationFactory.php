@@ -28,9 +28,6 @@ class ProductRelationStorageCommunicationFactory extends AbstractCommunicationFa
         return $this->getProvidedDependency(ProductRelationStorageDependencyProvider::FACADE_EVENT_BEHAVIOR);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductRelationStorage\Dependency\Facade\ProductRelationStorageToProductRelationFacadeInterface
-     */
     public function getProductRelationFacade(): ProductRelationStorageToProductRelationFacadeInterface
     {
         return $this->getProvidedDependency(ProductRelationStorageDependencyProvider::FACADE_PRODUCT_RELATION);

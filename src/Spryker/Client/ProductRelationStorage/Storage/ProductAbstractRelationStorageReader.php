@@ -33,10 +33,6 @@ class ProductAbstractRelationStorageReader implements ProductAbstractRelationSto
      */
     protected static $storageKeyBuilder;
 
-    /**
-     * @param \Spryker\Client\ProductRelationStorage\Dependency\Client\ProductRelationStorageToStorageClientInterface $storageClient
-     * @param \Spryker\Client\ProductRelationStorage\Dependency\Service\ProductRelationStorageToSynchronizationServiceInterface $synchronizationService
-     */
     public function __construct(
         ProductRelationStorageToStorageClientInterface $storageClient,
         ProductRelationStorageToSynchronizationServiceInterface $synchronizationService
@@ -124,9 +120,6 @@ class ProductAbstractRelationStorageReader implements ProductAbstractRelationSto
         return $this->getStorageKeyBuilder()->generateKey($synchronizationDataTransfer);
     }
 
-    /**
-     * @return \Spryker\Service\Synchronization\Dependency\Plugin\SynchronizationKeyGeneratorPluginInterface
-     */
     protected function getStorageKeyBuilder(): SynchronizationKeyGeneratorPluginInterface
     {
         if (static::$storageKeyBuilder === null) {

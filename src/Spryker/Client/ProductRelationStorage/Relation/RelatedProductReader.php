@@ -90,12 +90,6 @@ class RelatedProductReader implements RelatedProductReaderInterface
         return $this->getSortedProductAbstractIds($relationIds);
     }
 
-    /**
-     * @param int $idProductAbstract
-     * @param string $storeName
-     *
-     * @return array
-     */
     protected function getRelationIds(int $idProductAbstract, string $storeName): array
     {
         $productAbstractRelationStorageTransfer = $this->productAbstractRelationStorageReader->findProductAbstractRelation($idProductAbstract, $storeName);

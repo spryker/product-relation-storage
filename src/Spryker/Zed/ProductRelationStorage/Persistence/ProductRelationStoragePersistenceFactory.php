@@ -44,9 +44,6 @@ class ProductRelationStoragePersistenceFactory extends AbstractPersistenceFactor
         return SpyProductAbstractRelationStorageQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ProductRelation\Persistence\SpyProductRelationProductAbstractQuery
-     */
     public function getProductRelationProductAbstractQuery(): SpyProductRelationProductAbstractQuery
     {
         return $this->getProvidedDependency(ProductRelationStorageDependencyProvider::PROPEL_QUERY_PRODUCT_RELATION_PRODUCT_ABSTRACT);
